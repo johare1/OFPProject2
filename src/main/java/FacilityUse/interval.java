@@ -5,5 +5,13 @@ public class Interval {
     Date endDate = new Date();
 
 
+    public boolean isInUseDuringInterval(Date d)
+    {
+        if(d.after(startDate) && d.before(endDate))
+        {
+            return false;
+        }else{return true;}
+
+    }
 
 }
