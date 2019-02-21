@@ -5,7 +5,7 @@ import java.util.*;
 public class Facility {
     private int capacity;
     private boolean isvacated;
-    private info information;
+    //private info information;
     private MaintenenceMaster Maintenence_for_facility;
 
     public int calcMaintenanceCostForFacility(){
