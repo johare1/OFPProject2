@@ -5,4 +5,5 @@ public class Interval {
     Date endDate = new Date();
 
 
+
 }
