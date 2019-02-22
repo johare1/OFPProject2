@@ -4,17 +4,18 @@ public class FacilityUse {
     private string _info;
     public string info{get{return _info;}set{_info  = value;}}
     ArrayList<interval> intervalList = new ArrayList<interval>();
-    ArrayList<String> inspectionList = new ArrayList<String>();
+    ArrayList<string> inspectionList = new ArrayList<String>();
 
     //list actual usage
         //return info
 
 
-    public string ListInspections()
+    public ListInspections()
     {
         for (string s:inspectionList) {
 
-            return s;
+            System.out.println(s.toString());
+
         }
 
 
@@ -27,6 +28,11 @@ public class FacilityUse {
 
     public int calcUsageRate()
     {
+        int usageRate;
+
+        usageRate = intervalList.size();
+
+        return usageRate;
 
     }
 

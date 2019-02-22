@@ -1,4 +1,4 @@
-public class Inspections {
+public class inspections {
 
     private string _inspectionInfo;
     public int ID;
