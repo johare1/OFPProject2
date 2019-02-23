@@ -13,7 +13,6 @@ public class Facility {
         this.Maintenence_for_facility = new MaintenenceMaster();
         this.capacity = capac;
         this.name = uniquename;
-
     }
 
     public String getName(){
