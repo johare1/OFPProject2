@@ -10,7 +10,7 @@ public class FacilityUse {
         //return info
 
 
-    public ListInspections()
+    public void ListInspections()
     {
         for (string s:inspectionList) {
 
