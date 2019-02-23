@@ -20,7 +20,12 @@ public class Facility {
     }
 
     public boolean assignFacilityToUse(Date start,Date end){
-        return Usage_of_facility.isInUseDuring(start, end);
+        boolean canSchedule = Usage_of_facility.isInUseDuring(start, end);
+        if (!canSchedule){
+            this.Usage_of_facility.addInterval(start,end);
+            return true;
+        }
+        return false;
     }
 
     public void vacateFacility(){

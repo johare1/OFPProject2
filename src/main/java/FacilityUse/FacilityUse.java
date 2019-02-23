@@ -20,6 +20,11 @@ public class FacilityUse {
         return false;
     }
 
+    public void addInterval(Date start,Date end){
+        interval inUseDuring = new interval(start,end);
+        this.intervalList.add(inUseDuring);
+    }
+
     public FacilityUse(int usage, String inform){
         setInfo(inform);
         this.usageRate = usage;
