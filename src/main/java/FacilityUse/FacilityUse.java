@@ -1,33 +1,53 @@
+package FacilityUse;
+
 import java.util.*;
 public class FacilityUse {
 
-    private string _info;
-    public string info{get{return _info;}set{_info  = value;}}
+    private String _info;
     ArrayList<interval> intervalList = new ArrayList<interval>();
-    ArrayList<String> inspectionList = new ArrayList<String>();
+    ArrayList<inspections> inspectionList = new ArrayList<inspections>();
+    int usageRate;
 
-    //list actual usage
-        //return info
-
-
-    public string ListInspections()
-    {
-        for (string s:inspectionList) {
-
-            return s;
+    public boolean isInUseDuring(Date start, Date end){
+        for (interval s:this.intervalList) {
+            if (s.isInUseDuringInterval(start)){
+                return true;
+            }
+            if (s.isInUseDuringInterval(end)){
+                return true;
+            }
         }
-
-
+        return false;
     }
 
-    public string ListActualUsage()
+    public FacilityUse(int usage, String inform){
+        setInfo(inform);
+        this.usageRate = usage;
+    }
+
+    public String getInfo(){
+        return this._info;
+    }
+    
+    public void setInfo(String value){
+        this._info = value;
+    }
+
+    public void ListInspections()
     {
-        return info;
+        for (inspections s:this.inspectionList) {
+            System.out.println(s.toString());
+        }
+    }
+
+    public String ListActualUsage()
+    {
+        return this._info;
     }
 
     public int calcUsageRate()
     {
-
+        return this.usageRate;
     }
 
 

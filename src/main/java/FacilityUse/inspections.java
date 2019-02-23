@@ -1,13 +1,28 @@
-public class Inspections {
+package FacilityUse;
+import java.util.Date;
 
-    private string _inspectionInfo;
+public class inspections {
+
+    private String _inspectionInfo;
+    private Date completedDate = new Date();
     public int ID;
-    public string InspectionInfo{get{return _inspectionInfo;}set{ _inspectionInfo = value;}}
+    
+    public inspections(int ident,Date comp_date,String info){
+        setInfo(info);
+        this.completedDate = comp_date;
+        this.ID = ident;
+    }
 
-    public Date completedDate = new Date();
+    public String getInfo(){
+        return this._inspectionInfo;
+    }
+    
+    public void setInfo(String value){ 
+        this._inspectionInfo = value;
+    }
 
-    public string toString()
+    public String toString()
     {
-        return "Inspection number : " +ID + " info: " _inspectionInfo + " Date Completed: " completedDate;
+        return "Inspection number : " + this.ID + " info: " + this._inspectionInfo + " Date Completed: " + this.completedDate;
     }
 }

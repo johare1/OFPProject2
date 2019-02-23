@@ -2,17 +2,29 @@ package Facility;
 import Maintenence.*;
 import java.util.*;
 
+import FacilityUse.FacilityUse;
+
 public class Facility {
     private int capacity;
     private boolean isvacated;
     private String name;
     private String information;
     private MaintenenceMaster Maintenence_for_facility;
+    private FacilityUse Usage_of_facility;
 
-    public Facility(String uniquename,int capac,String info){
+    public Facility(String uniquename,int capac,String info,int useRate,String info_about_use){
         this.Maintenence_for_facility = new MaintenenceMaster();
+        this.Usage_of_facility = new FacilityUse(useRate, info_about_use);
         this.capacity = capac;
         this.name = uniquename;
+    }
+
+    public boolean assignFacilityToUse(Date start,Date end){
+        return Usage_of_facility.isInUseDuring(start, end);
+    }
+
+    public void vacateFacility(){
+        this.isvacated = true;
     }
 
     public String getName(){
