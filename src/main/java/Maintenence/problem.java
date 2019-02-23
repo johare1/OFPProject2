@@ -11,6 +11,10 @@ public class problem{
         downtime = downtimer;
     }
 
+    public String toString(){
+        return "Info: " + info + ", Problem rate: " + problemRate + ", Downtime: " + downtime;
+    }
+
     public String getInfo(){
         return info;
     }

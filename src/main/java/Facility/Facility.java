@@ -6,7 +6,7 @@ import FacilityUse.FacilityUse;
 
 public class Facility {
     private int capacity;
-    private boolean isvacated;
+    private boolean isvacated = false;
     private String name;
     private String information;
     private MaintenenceMaster Maintenence_for_facility;
@@ -15,10 +15,29 @@ public class Facility {
     public Facility(String uniquename,int capac,String info,int useRate,String info_about_use){
         this.Maintenence_for_facility = new MaintenenceMaster();
         this.Usage_of_facility = new FacilityUse(useRate, info_about_use);
+        this.information = info;
         this.capacity = capac;
         this.name = uniquename;
     }
 
+    public boolean vacateStatus(){
+        return isvacated;
+    }
+
+    public void ListInspections()
+    {
+       Usage_of_facility.ListInspections();
+    }
+
+    public String ListActualUsage()
+    {
+        return Usage_of_facility.ListActualUsage();
+    }
+
+    public int calcUsageRate()
+    {
+        return Usage_of_facility.calcUsageRate();
+    }
     public boolean assignFacilityToUse(Date start,Date end){
         boolean canSchedule = Usage_of_facility.isInUseDuring(start, end);
         if (!canSchedule){
@@ -26,6 +45,10 @@ public class Facility {
             return true;
         }
         return false;
+    }
+
+    public boolean isInUseDuringInterval(Date start,Date end){
+        return Usage_of_facility.isInUseDuring(start, end);
     }
 
     public void vacateFacility(){
@@ -66,8 +89,28 @@ public class Facility {
         return problemRate;     
     }
 
-    public ArrayList<problem> listFacilityProblems(){
-        return Maintenence_for_facility.getProblems();
+    public void listFacilityProblems(){
+        for (problem s:Maintenence_for_facility.getProblems())
+        System.out.println(s.toString());
+    }
+
+    public void listMaintRequests(){
+        for (requests s:Maintenence_for_facility.listMaintRequests())
+        System.out.println(s.toString());
+    }
+
+    public void listMaintenance(){
+        for (requests s:Maintenence_for_facility.listMaintenance())
+        System.out.println(s.toString());
+    }
+
+    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete, problem problem_to_solve){
+        Maintenence_for_facility.makeFacilityMaintRequest(ID, info, price_to_complete, problem_to_solve);
+        return info;
+    }
+
+    public boolean scheduleMaintenence(String ID,Date date_schedule){
+        return Maintenence_for_facility.scheduleMaintenence(ID, date_schedule);
     }
 
     public int calcDownTimeForFacility(){

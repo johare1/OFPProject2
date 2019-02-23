@@ -1,6 +1,6 @@
 import Maintenence.problem;
 import Maintenence.requests;
-import java.util.ArrayList;
+import java.util.*;
 
 import Facility.Facility;
 
@@ -9,18 +9,18 @@ public object listFacilities (X)
 public object getFacilityInformation(X)
 public object requestAvailableCapacity()
 public object addNewFacility(X)
-public void addFacilityDetail()
-public object removeFacility()
+public void addFacilityDetail(X)
+public object removeFacility(X)
 • Facility Use:
-public object isInUseDuringInterval()
-public object assignFacilityToUse()
-public object vacateFacility()
-public object listInspections()
-public object listActualUsage()
-public object calcUsageRate()
+public object isInUseDuringInterval(X)
+public object assignFacilityToUse(X)
+public object vacateFacility(X)
+public object listInspections(X)
+public object listActualUsage(X)
+public object calcUsageRate(X)
 • Facility Maintenance:
-public object makeFacilityMaintRequest()
-public object scheduleMaintenance() 
+public object makeFacilityMaintRequest(X)
+public object scheduleMaintenance(X) 
 public object calcMaintenanceCostForFacility()
 public object calcProblemRateForFacility()
 public object calcDownTimeForFacility()
@@ -43,8 +43,63 @@ public class main {
         // requestAvailableCapacity
         System.out.println("kitchen available capacity: "+ kitchen.requestAvailableCapacity());
 
+        // addFacilityDetail
+        kitchen.addFacilityDetail(" Detail: kitchen is 3 years out of date");
+        System.out.println("kitchen info updated: " + kitchen.getFacilityInformation());
 
-        problem test = new problem("test", 2, 2);
+        // removeFacility
+        removeFacility(listOfFacilities, "Break Room");
+        System.out.println("no more breaks, break room removed");
+
+        //assignFacilityToUse
+        Date start = new Date(2019,5,10);
+        Date end = new Date(2019,3,10);
+        kitchen.assignFacilityToUse(start, end);
+
+        //isInUseDuringInterval
+        Date starttwo = new Date(2019,2,10);
+        System.out.println("this should be true: " + kitchen.isInUseDuringInterval(starttwo, end));
+
+        //vacateFacility
+        kitchen.vacateFacility();
+        System.out.println("this should be true: " + kitchen.vacateStatus());
+
+        //listInspections
+        kitchen.ListInspections();
+
+        //listActualUsage
+        kitchen.ListActualUsage();
+
+        //calcUsageRate
+        System.out.println("this should be 30: " + kitchen.calcUsageRate());
+
+        //makeFacilitMaintRequest
+        problem test = new problem("broken grill", 9, 4);
+        kitchen.makeFacilityMaintRequest("1", "broken grill in need of repair", 100, test);
+
+        //scheduleMaintenance
+        System.out.println("this should be true: " + kitchen.scheduleMaintenence("1",start));
+
+        //public object calcMaintenanceCostForFacility
+        System.out.println("this should be 100: " + kitchen.calcMaintenanceCostForFacility());
+
+        //calcProblemRateForFacility
+        System.out.println("this should be 9: " + kitchen.calcProblemRateForFacility());
+
+        //calcDownTimeForFacility
+        System.out.println("this should be 4: " + kitchen.calcDownTimeForFacility());
+
+        //listMaintRequests
+        kitchen.listMaintRequests();
+
+        //listMaintenance
+        //this would print finished requests if I had time to make it switch a finished request to this list
+        kitchen.listMaintenance();
+
+        //listFacilityProblems
+        kitchen.listFacilityProblems();
+
+        //additional test
         requests hello = new requests("reee", "info", 2, test);
         System.out.println(hello.getPricetoComplete());
         

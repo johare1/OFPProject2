@@ -10,6 +10,10 @@ public class requests{
     Date Scheduled_date;
     int rate_per_hour;
 
+    public String toString(){
+        return "ID: " + this.Id + ", Info: " + this.info + ", Price to complete: " + this.price_to_complete + ", Problem: " + this.attached_problem.toString();
+    }
+
     public problem getAttachedProblem(){
         return this.attached_problem;
     };
