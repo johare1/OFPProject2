@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class MaintenenceMaster{
     //finished requests
-    ArrayList<requests> maintenences;
+    ArrayList<requests> maintenences = new ArrayList<requests>();
     //pending requests
-    ArrayList<requests> requests_for_fac;
+    ArrayList<requests> requests_for_fac = new ArrayList<requests>();
 
     public MaintenenceMaster(){
 

@@ -5,8 +5,32 @@ import java.util.*;
 public class Facility {
     private int capacity;
     private boolean isvacated;
-    //private info information;
+    private String name;
+    private String information;
     private MaintenenceMaster Maintenence_for_facility;
+
+    public Facility(String uniquename,int capac,String info){
+        this.Maintenence_for_facility = new MaintenenceMaster();
+        this.capacity = capac;
+        this.name = uniquename;
+
+    }
+
+    public String getName(){
+        return this.name;
+    }
+
+    public String getFacilityInformation(){
+        return this.information;
+    }
+
+    public int requestAvailableCapacity(){
+        return this.capacity;
+    }
+
+    public void addFacilityDetail(String info_to_be_added){
+        this.information = this.information + info_to_be_added;
+    }
 
     public int calcMaintenanceCostForFacility(){
         ArrayList<requests> requests_for_this_facility = Maintenence_for_facility.listMaintRequests();
