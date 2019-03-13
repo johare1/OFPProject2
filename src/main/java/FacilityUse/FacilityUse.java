@@ -4,12 +4,12 @@ import java.util.*;
 public class FacilityUse {
 
     private String _info;
-    ArrayList<interval> intervalList = new ArrayList<interval>();
-    ArrayList<inspections> inspectionList = new ArrayList<inspections>();
+    ArrayList<Interval> intervalList = new ArrayList<Interval>();
+    ArrayList<Inspections> inspectionList = new ArrayList<Inspections>();
     int usageRate;
 
     public boolean isInUseDuring(Date start, Date end){
-        for (interval s:this.intervalList) {
+        for (Interval s:this.intervalList) {
             if (s.isInUseDuringInterval(start)){
                 return true;
             }
@@ -21,7 +21,7 @@ public class FacilityUse {
     }
 
     public void addInterval(Date start,Date end){
-        interval inUseDuring = new interval(start,end);
+        Interval inUseDuring = new Interval(start,end);
         this.intervalList.add(inUseDuring);
     }
 
@@ -40,7 +40,7 @@ public class FacilityUse {
 
     public void ListInspections()
     {
-        for (inspections s:this.inspectionList) {
+        for (Inspections s:this.inspectionList) {
             System.out.println(s.toString());
         }
     }

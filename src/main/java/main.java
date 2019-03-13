@@ -1,5 +1,5 @@
-import Maintenence.problem;
-import Maintenence.requests;
+import Maintenence.Problem;
+import Maintenence.Requests;
 import java.util.*;
 
 import Facility.Facility;
@@ -74,7 +74,7 @@ public class main {
         System.out.println("this should be 30: " + kitchen.calcUsageRate());
 
         //makeFacilitMaintRequest
-        problem test = new problem("broken grill", 9, 4);
+        Problem test = new Problem("broken grill", 9, 4);
         kitchen.makeFacilityMaintRequest("1", "broken grill in need of repair", 100, test);
 
         //scheduleMaintenance
@@ -100,7 +100,7 @@ public class main {
         kitchen.listFacilityProblems();
 
         //additional test
-        requests hello = new requests("reee", "Info", 2, test);
+        Requests hello = new Requests("reee", "Info", 2, test);
         System.out.println(hello.getPricetoComplete());
         
         // listFacilities

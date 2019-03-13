@@ -72,7 +72,7 @@ public class Facility {
     }
 
     public int calcMaintenanceCostForFacility(){
-        ArrayList<requests> requests_for_this_facility = Maintenence_for_facility.listMaintRequests();
+        ArrayList<Requests> requests_for_this_facility = Maintenence_for_facility.listMaintRequests();
         int cost = 0;
         for (int i = 0; i < requests_for_this_facility.size(); i++){
             cost += requests_for_this_facility.get(i).getPricetoComplete();
@@ -81,7 +81,7 @@ public class Facility {
     }
 
     public int calcProblemRateForFacility(){
-        ArrayList<requests> requests_for_this_facility = Maintenence_for_facility.listMaintRequests();
+        ArrayList<Requests> requests_for_this_facility = Maintenence_for_facility.listMaintRequests();
         int problemRate = 0;
         for (int i = 0; i < requests_for_this_facility.size(); i++){
             problemRate += requests_for_this_facility.get(i).getAttachedProblem().getProblemRate();
@@ -90,21 +90,21 @@ public class Facility {
     }
 
     public void listFacilityProblems(){
-        for (problem s:Maintenence_for_facility.getProblems())
+        for (Problem s:Maintenence_for_facility.getProblems())
         System.out.println(s.toString());
     }
 
     public void listMaintRequests(){
-        for (requests s:Maintenence_for_facility.listMaintRequests())
+        for (Requests s:Maintenence_for_facility.listMaintRequests())
         System.out.println(s.toString());
     }
 
     public void listMaintenance(){
-        for (requests s:Maintenence_for_facility.listMaintenance())
+        for (Requests s:Maintenence_for_facility.listMaintenance())
         System.out.println(s.toString());
     }
 
-    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete, problem problem_to_solve){
+    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete, Problem problem_to_solve){
         Maintenence_for_facility.makeFacilityMaintRequest(ID, info, price_to_complete, problem_to_solve);
         return info;
     }
@@ -114,7 +114,7 @@ public class Facility {
     }
 
     public int calcDownTimeForFacility(){
-        ArrayList<requests> requests_for_this_facility = Maintenence_for_facility.listMaintRequests();
+        ArrayList<Requests> requests_for_this_facility = Maintenence_for_facility.listMaintRequests();
         int totalDowntime = 0;
         for (int i = 0; i < requests_for_this_facility.size(); i++){
             totalDowntime += requests_for_this_facility.get(i).getAttachedProblem().getDowntime();

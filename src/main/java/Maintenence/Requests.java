@@ -5,7 +5,7 @@ public class Requests{
     String Id;
     String info;
     boolean is_completed;
-    problem attached_problem;
+    Problem attached_problem;
     int price_to_complete;
     Date Scheduled_date;
     int rate_per_hour;
@@ -14,7 +14,7 @@ public class Requests{
         return "ID: " + this.Id + ", Info: " + this.info + ", Price to complete: " + this.price_to_complete + ", Problem: " + this.attached_problem.toString();
     }
 
-    public problem getAttachedProblem(){
+    public Problem getAttachedProblem(){
         return this.attached_problem;
     };
 
@@ -42,7 +42,7 @@ public class Requests{
         return this.Id;
     }
 
-    public Requests(String ID,String information,int price_to_comp, problem problem_to_solve){
+    public Requests(String ID,String information,int price_to_comp, Problem problem_to_solve){
         this.Id = ID;
         this.info = information;
         this.price_to_complete = price_to_comp;

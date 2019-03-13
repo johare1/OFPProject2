@@ -4,28 +4,28 @@ import java.util.Date;
 
 public class MaintenenceMaster{
     //finished requests
-    ArrayList<requests> maintenences = new ArrayList<requests>();
+    ArrayList<Requests> maintenences = new ArrayList<Requests>();
     //pending requests
-    ArrayList<requests> requests_for_fac = new ArrayList<requests>();
+    ArrayList<Requests> requests_for_fac = new ArrayList<Requests>();
 
     public MaintenenceMaster(){
 
     }
 
     // Loops through requests, taking their problems to make a list and returning it
-    public ArrayList<problem> getProblems(){
-        ArrayList<problem> problems_to_be_returned = new ArrayList<problem>();
+    public ArrayList<Problem> getProblems(){
+        ArrayList<Problem> problems_to_be_returned = new ArrayList<Problem>();
         for(int i = 0; i < requests_for_fac.size(); i++){
             problems_to_be_returned.add(requests_for_fac.get(i).getAttachedProblem());
         }
         return problems_to_be_returned;
     }
 
-    public ArrayList<requests> listMaintRequests(){
+    public ArrayList<Requests> listMaintRequests(){
         return requests_for_fac;
     }
 
-    public ArrayList<requests> listMaintenance(){
+    public ArrayList<Requests> listMaintenance(){
         return maintenences;
     }
 
@@ -39,9 +39,9 @@ public class MaintenenceMaster{
         return false;
     }
 
-    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete, problem problem_to_solve){
+    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete, Problem problem_to_solve){
         // first make request
-        requests new_request = new requests(ID,info,price_to_complete,problem_to_solve);
+        Requests new_request = new Requests(ID,info,price_to_complete,problem_to_solve);
         // add it to list of requests
         this.requests_for_fac.add(new_request);
         return info;
