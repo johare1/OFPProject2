@@ -38,14 +38,14 @@ public class main {
         Facility kitchen = new Facility("Kitchen",14,"where food is made",30,"food is made here, usage rate includes: food made, wages paid, cleaning");
 
         // getFacilityInformation
-        System.out.println("kitchen info: " + kitchen.getFacilityInformation());
+        System.out.println("kitchen Info: " + kitchen.getFacilityInformation());
 
         // requestAvailableCapacity
         System.out.println("kitchen available capacity: "+ kitchen.requestAvailableCapacity());
 
         // addFacilityDetail
         kitchen.addFacilityDetail(" Detail: kitchen is 3 years out of date");
-        System.out.println("kitchen info updated: " + kitchen.getFacilityInformation());
+        System.out.println("kitchen Info updated: " + kitchen.getFacilityInformation());
 
         // removeFacility
         removeFacility(listOfFacilities, "Break Room");
@@ -100,7 +100,7 @@ public class main {
         kitchen.listFacilityProblems();
 
         //additional test
-        requests hello = new requests("reee", "info", 2, test);
+        requests hello = new requests("reee", "Info", 2, test);
         System.out.println(hello.getPricetoComplete());
         
         // listFacilities

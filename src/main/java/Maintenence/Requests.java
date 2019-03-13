@@ -1,7 +1,7 @@
 package Maintenence;
 import java.util.Date;
 
-public class requests{
+public class Requests{
     String Id;
     String info;
     boolean is_completed;
@@ -42,7 +42,7 @@ public class requests{
         return this.Id;
     }
 
-    public requests(String ID,String information,int price_to_comp, problem problem_to_solve){
+    public Requests(String ID,String information,int price_to_comp, problem problem_to_solve){
         this.Id = ID;
         this.info = information;
         this.price_to_complete = price_to_comp;

@@ -1,11 +1,11 @@
 package Maintenence;
 
-public class problem{
+public class Problem {
     String info;
     int problemRate;
     int downtime;
 
-    public problem(String inform,int problemRater, int downtimer){
+    public Problem(String inform, int problemRater, int downtimer){
         info = inform;
         problemRate = problemRater;
         downtime = downtimer;

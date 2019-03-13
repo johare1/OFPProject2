@@ -1,11 +1,11 @@
 package FacilityUse;
 import java.util.Date;
 
-public class interval {
+public class Interval {
     Date startDate = new Date();
     Date endDate = new Date();
 
-    public interval(Date start,Date end){
+    public Interval(Date start, Date end){
         this.startDate = start;
         this.endDate = end;
     }

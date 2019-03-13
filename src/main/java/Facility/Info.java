@@ -1,6 +1,6 @@
 package Facility;
 
-public class info {
+public class Info {
         String name;
         String address;
         String details;
