@@ -74,7 +74,8 @@ public class main {
         System.out.println("this should be 30: " + kitchen.calcUsageRate());
 
         //makeFacilitMaintRequest
-        Problem test = new Problem("broken grill", 9, 4);
+        Problem test = kitchen.getMaintenanceMaster().listMaintRequests().get(0).getAttachedProblem();
+
         kitchen.makeFacilityMaintRequest("1", "broken grill in need of repair", 100, test);
 
         //scheduleMaintenance

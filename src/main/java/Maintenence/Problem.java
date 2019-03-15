@@ -1,14 +1,14 @@
+//package src.main.java.Maintenance;
 package Maintenence;
 
-public class Problem {
+//problem implementation
+
+public class Problem implements ProblemInf{
     String info;
     int problemRate;
     int downtime;
 
-    public Problem(String inform, int problemRater, int downtimer){
-        info = inform;
-        problemRate = problemRater;
-        downtime = downtimer;
+    public Problem(){
     }
 
     public String toString(){
@@ -25,6 +25,19 @@ public class Problem {
 
     public int getDowntime(){
         return downtime;
+    }
+
+
+    public void setInfo(String info){
+       this.info = info;
+    }
+
+    public void setProblemRate(int problemRate){
+       this.problemRate = problemRate;
+    }
+
+    public void setDowntime(int downtime){
+        this.downtime=downtime;
     }
 }
 

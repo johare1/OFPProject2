@@ -20,6 +20,8 @@ public class Facility {
         this.name = uniquename;
     }
 
+    public MaintenenceMaster getMaintenanceMaster(){return Maintenence_for_facility;}
+
     public boolean vacateStatus(){
         return isvacated;
     }
@@ -104,8 +106,8 @@ public class Facility {
         System.out.println(s.toString());
     }
 
-    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete, Problem problem_to_solve){
-        Maintenence_for_facility.makeFacilityMaintRequest(ID, info, price_to_complete, problem_to_solve);
+    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete, Problem TestProblem){
+        Maintenence_for_facility.makeFacilityMaintRequest(ID, info, price_to_complete, TestProblem);
         return info;
     }
 
