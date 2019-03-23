@@ -1,5 +1,5 @@
 //package src.main.java.Maintenance;
-package Maintenence;
+package pkgs.Maintenence;
 
 //problem implementation
 

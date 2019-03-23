@@ -1,8 +1,12 @@
-import Maintenence.Problem;
-import Maintenence.Requests;
+package pkgs;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pkgs.Maintenence.Problem;
+import pkgs.Maintenence.Requests;
 import java.util.*;
 
-import Facility.Facility;
+import pkgs.Facility.Facility;
 
 /* TODO: TESTING
 public object listFacilities (X)
@@ -30,12 +34,21 @@ public object listFacilityProblems()
 */
 
 public class main {
-    public static void yett(){
+    public static void main(String[] args){
+
+        ApplicationContext context = new ClassPathXmlApplicationContext("file:META_INF/app-context.xml");
+        System.out.println("***************** Application Context instantiated! ******************");
+
         ArrayList<Facility> listOfFacilities = new ArrayList<Facility>();
 
         // addNewFacility
-        addNewFacility(listOfFacilities, "Break Room", 12,"a room to take breaks in",9,"breaks are taken here, usage rate inlcudes: wages for workers not working");
-        Facility kitchen = new Facility("Kitchen",14,"where food is made",30,"food is made here, usage rate includes: food made, wages paid, cleaning");
+        Facility kitchen = (Facility) context.getBean("facility");
+        kitchen.setName("Kitchen");
+        kitchen.setCapacity(14);
+        kitchen.setInformation("where food is made");
+        kitchen.getUsage_of_facility().setUsageRate(30);
+        kitchen.getUsage_of_facility().set_info("food is made here, usage rate includes: food made, wages paid, cleaning");
+        addNewFacility(listOfFacilities,kitchen);
 
         // getFacilityInformation
         System.out.println("kitchen Info: " + kitchen.getFacilityInformation());
@@ -74,14 +87,12 @@ public class main {
         System.out.println("this should be 30: " + kitchen.calcUsageRate());
 
         //makeFacilitMaintRequest
-        /*Requests hellotest = new Requests("reee", "Info", 2);
-        Problem test = hellotest.getAttachedProblem();
-
-        test.setDowntime(3);
-        test.setInfo("Grill is busted, please fix");
-        test.setProblemRate(4);*/
-
-        kitchen.makeFacilityMaintRequest("1", "broken grill in need of repair", 100);
+        Problem test = (Problem) context.getBean("TestProblem");
+        test.setInfo("broken grill");
+        test.setProblemRate(9);
+        test.setDowntime(4);
+        kitchen.makeFacilityMaintRequest("1", "broken grill in need of repair", 100,test);
+        System.out.println(kitchen.getMaintenence_for_facility().getRequests_for_fac().get(0).getAttached_Problem().toString());
 
         //scheduleMaintenance
         System.out.println("this should be true: " + kitchen.scheduleMaintenence("1",start));
@@ -120,9 +131,8 @@ public class main {
         }
     }
 
-    public static void addNewFacility(ArrayList<Facility> to_be_added,String uniquename,int capac,String info,int usageRate,String usageInfo){
-        Facility newfac = new Facility(uniquename,capac,info,usageRate,usageInfo);
-        to_be_added.add(newfac);
+    public static void addNewFacility(ArrayList<Facility> to_be_added,Facility fac){
+        to_be_added.add(fac);
     }
 
     public static void addFacility(ArrayList<Facility> to_be_added,Facility fac_to_be_added){

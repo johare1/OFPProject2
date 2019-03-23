@@ -1,4 +1,4 @@
-package Maintenence;
+package pkgs.Maintenence;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
@@ -17,7 +17,7 @@ public class MaintenenceMaster{
     public List<Problem> getProblems(){
         List<Problem> problems_to_be_returned = new ArrayList<Problem>();
         for(int i = 0; i < requests_for_fac.size(); i++){
-            problems_to_be_returned.add(requests_for_fac.get(i).getAttachedProblem());
+            problems_to_be_returned.add(requests_for_fac.get(i).getAttached_Problem());
         }
         return problems_to_be_returned;
     }
@@ -40,12 +40,13 @@ public class MaintenenceMaster{
         return false;
     }
 
-    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete){
+    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete,Problem probe){
         // first make request
         Requests new_request = new Requests();
         new_request.setId(ID);
         new_request.setInfo(info);
         new_request.setPricetoComplete(price_to_complete);
+        new_request.setAttached_problem(probe);
         // add it to list of requests
         this.requests_for_fac.add(new_request);
         return info;

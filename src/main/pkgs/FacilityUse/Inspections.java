@@ -1,4 +1,4 @@
-package FacilityUse;
+package pkgs.FacilityUse;
 import java.util.Date;
 
 public class Inspections {
@@ -7,19 +7,23 @@ public class Inspections {
     private Date completedDate = new Date();
     public int ID;
     
-    public Inspections(int ident, Date comp_date, String info){
-        setInfo(info);
-        this.completedDate = comp_date;
-        this.ID = ident;
-    }
+    public Inspections(){ }
 
-    public String getInfo(){
+    public String get_inspectionInfo(){
         return this._inspectionInfo;
     }
     
-    public void setInfo(String value){ 
+    public void set_inspectionInfo(String value){
         this._inspectionInfo = value;
     }
+
+    public Date getCompletedDate(){return this.completedDate;}
+
+    public void setCompletedDate(Date d){this.completedDate = d;}
+
+    public int getID(){return this.ID;}
+
+    public void setID(int iden){this.ID = iden;}
 
     public String toString()
     {

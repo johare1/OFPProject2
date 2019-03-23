@@ -1,8 +1,8 @@
-package Facility;
-import Maintenence.*;
+package pkgs.Facility;
+import pkgs.Maintenence.*;
 import java.util.*;
 
-import FacilityUse.FacilityUse;
+import pkgs.FacilityUse.FacilityUse;
 
 public class Facility {
     private int capacity;
@@ -12,15 +12,31 @@ public class Facility {
     private MaintenenceMaster Maintenence_for_facility;
     private FacilityUse Usage_of_facility;
 
-    public Facility(String uniquename,int capac,String info,int useRate,String info_about_use){
-        this.Maintenence_for_facility = new MaintenenceMaster();
-        this.Usage_of_facility = new FacilityUse(useRate, info_about_use);
-        this.information = info;
-        this.capacity = capac;
-        this.name = uniquename;
+    public Facility(){
+        //this.Usage_of_facility = new FacilityUse(useRate, info_about_use);
     }
 
-    public MaintenenceMaster getMaintenanceMaster(){return Maintenence_for_facility;}
+    public void setMaintenence_for_facility(MaintenenceMaster main){this.Maintenence_for_facility = main;}
+
+    public MaintenenceMaster getMaintenence_for_facility(){return Maintenence_for_facility;}
+
+    public void setUsage_of_facility(FacilityUse use){this.Usage_of_facility = use;}
+
+    public FacilityUse getUsage_of_facility(){return this.Usage_of_facility;}
+
+    public void setInformation(String info){this.information = info;}
+
+    public String getInformation(){return this.information;}
+
+    public void setCapacity(int cap){this.capacity = cap;}
+
+    public int getCapacity(){return this.capacity;}
+
+    public void setName(String nam){this.name = nam;}
+
+    public String getName(){
+        return this.name;
+    }
 
     public boolean vacateStatus(){
         return isvacated;
@@ -57,10 +73,6 @@ public class Facility {
         this.isvacated = true;
     }
 
-    public String getName(){
-        return this.name;
-    }
-
     public String getFacilityInformation(){
         return this.information;
     }
@@ -86,7 +98,7 @@ public class Facility {
         List<Requests> requests_for_this_facility = Maintenence_for_facility.listMaintRequests();
         int problemRate = 0;
         for (int i = 0; i < requests_for_this_facility.size(); i++){
-            problemRate += requests_for_this_facility.get(i).getAttachedProblem().getProblemRate();
+            problemRate += requests_for_this_facility.get(i).getAttached_Problem().getProblemRate();
         }  
         return problemRate;     
     }
@@ -106,8 +118,8 @@ public class Facility {
         System.out.println(s.toString());
     }
 
-    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete){
-        Maintenence_for_facility.makeFacilityMaintRequest(ID, info, price_to_complete);
+    public String makeFacilityMaintRequest(String ID,String info,int price_to_complete, Problem prob){
+        Maintenence_for_facility.makeFacilityMaintRequest(ID, info, price_to_complete, prob);
         return info;
     }
 
@@ -119,7 +131,7 @@ public class Facility {
         List<Requests> requests_for_this_facility = Maintenence_for_facility.listMaintRequests();
         int totalDowntime = 0;
         for (int i = 0; i < requests_for_this_facility.size(); i++){
-            totalDowntime += requests_for_this_facility.get(i).getAttachedProblem().getDowntime();
+            totalDowntime += requests_for_this_facility.get(i).getAttached_Problem().getDowntime();
         }  
         return totalDowntime; 
     }

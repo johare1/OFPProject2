@@ -1,4 +1,4 @@
-package Maintenence;
+package pkgs.Maintenence;
 import java.util.Date;
 
 public class Requests{
@@ -52,16 +52,12 @@ public class Requests{
 
     public void setRate_per_hour(int rate){this.rate_per_hour = rate;}
 
-    public Problem getAttachedProblem(){
+    public Problem getAttached_Problem(){
         return this.attached_problem;
     }
 
     public void setAttached_problem(Problem attached_problem) {
         this.attached_problem = attached_problem;
-    }
-
-    public Problem getAttached_problem() {
-        return attached_problem;
     }
 
 }

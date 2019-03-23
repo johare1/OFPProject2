@@ -1,4 +1,6 @@
-import Maintenence.*;
+package pkgs;
+
+import pkgs.Maintenence.*;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.beans.factory.BeanFactory;
@@ -9,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class SpringTest {
-    public static void main(String args[]){
+    public static void test(){
         ApplicationContext context = new ClassPathXmlApplicationContext("META_INF/app-context.xml");
         System.out.println("***************** Application Context instantiated! ******************");
 
@@ -21,9 +23,9 @@ public class SpringTest {
         testreq.setRate_per_hour(2);
         testreq.setId("BG");
 
-        testreq.getAttachedProblem().setDowntime(5);
-        testreq.getAttachedProblem().setInfo("broken grilla");
-        testreq.getAttachedProblem().setProblemRate(8);
+        //testreq.getAttachedProblem().setDowntime(5);
+        //testreq.getAttachedProblem().setInfo("broken grilla");
+        //testreq.getAttachedProblem().setProblemRate(8);
 
         List<Requests> testlist = new ArrayList<Requests>( Arrays.asList(testreq));
 
@@ -32,7 +34,7 @@ public class SpringTest {
 
         System.out.println(testmas.getRequests_for_fac().get(0).toString());
 
-        System.out.println(testmas.getRequests_for_fac().get(0).getAttachedProblem().toString());
+        //System.out.println(testmas.getRequests_for_fac().get(0).getAttachedProblem().toString());
 
     }
 }

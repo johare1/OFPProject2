@@ -1,14 +1,11 @@
-package FacilityUse;
+package pkgs.FacilityUse;
 import java.util.Date;
 
 public class Interval {
     Date startDate = new Date();
     Date endDate = new Date();
 
-    public Interval(Date start, Date end){
-        this.startDate = start;
-        this.endDate = end;
-    }
+    public Interval(){}
 
     public boolean isInUseDuringInterval(Date d)
     {
@@ -19,4 +16,11 @@ public class Interval {
 
     }
 
+    public void setStartDate(Date d){this.startDate = d;}
+
+    public Date getStartDate(){return this.startDate;}
+
+    public void setEndDate(Date d){this.endDate = d;}
+
+    public Date getEndDate(){return this.endDate;}
 }
