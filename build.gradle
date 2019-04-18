@@ -11,6 +11,14 @@ repositories {
     mavenCentral()
 }
 
+buildDir = 'src/main/pkgs'
+
+sourceSets {
+    pkgs {
+       
+    }
+}
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'Gradle Quickstart',

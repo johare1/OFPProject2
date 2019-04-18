@@ -1,7 +1,7 @@
 package pkgs.FacilityUse;
 import java.util.Date;
 
-public class Inspections {
+public class Inspections implements InspectionsInf {
 
     private String _inspectionInfo;
     private Date completedDate = new Date();

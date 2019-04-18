@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
-public class MaintenenceMaster{
+public class MaintenenceMaster implements MaintenenceMasterInf{
     //finished requests
     List<Requests> maintenences;
     //pending requests

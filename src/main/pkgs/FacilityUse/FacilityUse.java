@@ -1,7 +1,7 @@
 package pkgs.FacilityUse;
 
 import java.util.*;
-public class FacilityUse {
+public class FacilityUse implements FacilityUseInf {
 
     private String _info;
     List<Interval> intervalList;
@@ -10,23 +10,20 @@ public class FacilityUse {
 
     public FacilityUse(){ }
 
-    public boolean isInUseDuring(Date start, Date end){
+    public boolean isInUseDuring(Interval v){
         for (Interval s:this.intervalList) {
-            if (s.isInUseDuringInterval(start)){
+            if (s.isInUseDuringInterval(v.getStartDate())){
                 return true;
             }
-            if (s.isInUseDuringInterval(end)){
+            if (s.isInUseDuringInterval(v.getEndDate())){
                 return true;
             }
         }
         return false;
     }
 
-    public void addInterval(Date start,Date end){
-        Interval inUseDuring = new Interval();
-        inUseDuring.setStartDate(start);
-        inUseDuring.setEndDate(end);
-        this.intervalList.add(inUseDuring);
+    public void addInterval(Interval v){
+        this.intervalList.add(v);
     }
 
     public String get_info(){ return this._info; }
@@ -61,6 +58,5 @@ public class FacilityUse {
     {
         return this.usageRate;
     }
-
 
 }

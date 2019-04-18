@@ -1,7 +1,7 @@
 package pkgs.Maintenence;
 import java.util.Date;
 
-public class Requests{
+public class Requests implements RequestsInf{
     private String Id;
     private String info;
     private boolean is_completed;

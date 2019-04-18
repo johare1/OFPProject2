@@ -2,6 +2,9 @@ package pkgs;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import pkgs.FacilityUse.FacilityUse;
+import pkgs.FacilityUse.Interval;
+import pkgs.Maintenence.MaintenenceMaster;
 import pkgs.Maintenence.Problem;
 import pkgs.Maintenence.Requests;
 import java.util.*;
@@ -46,8 +49,12 @@ public class main {
         kitchen.setName("Kitchen");
         kitchen.setCapacity(14);
         kitchen.setInformation("where food is made");
-        kitchen.getUsage_of_facility().setUsageRate(30);
-        kitchen.getUsage_of_facility().set_info("food is made here, usage rate includes: food made, wages paid, cleaning");
+
+        FacilityUse KitchenUse = (FacilityUse) context.getBean("facilityuse");
+        KitchenUse.setUsageRate(30);
+        KitchenUse.set_info("food is made here, usage rate includes: food made, wages paid, cleaning");
+        kitchen.setUsage_of_facility(KitchenUse);
+
         addNewFacility(listOfFacilities,kitchen);
 
         // getFacilityInformation
@@ -65,13 +72,22 @@ public class main {
         System.out.println("no more breaks, break room removed");
 
         //assignFacilityToUse
-        Date start = new Date(2019,5,10);
-        Date end = new Date(2019,3,10);
-        kitchen.assignFacilityToUse(start, end);
+        Interval ve = (Interval) context.getBean("TestInterval");
+
+        Date start = ve.getStartDate();
+        start.setYear(2019);
+        start.setMonth(5);
+        start.setDate(10);
+
+        Date end = ve.getEndDate();
+        start.setYear(2019);
+        start.setMonth(3);
+        start.setDate(10);
+
+        kitchen.assignFacilityToUse(ve);
 
         //isInUseDuringInterval
-        Date starttwo = new Date(2019,2,10);
-        System.out.println("this should be true: " + kitchen.isInUseDuringInterval(starttwo, end));
+        System.out.println("this should be true: " + kitchen.isInUseDuringInterval(ve));
 
         //vacateFacility
         kitchen.vacateFacility();
@@ -91,7 +107,12 @@ public class main {
         test.setInfo("broken grill");
         test.setProblemRate(9);
         test.setDowntime(4);
-        kitchen.makeFacilityMaintRequest("1", "broken grill in need of repair", 100,test);
+        //Inject Maintenence Master bean
+        MaintenenceMaster KitchenMaster = (MaintenenceMaster) context.getBean("maintenencemaster");
+        KitchenMaster.makeFacilityMaintRequest("1", "broken grill in need of repair", 100,test);
+        //Add it to kitchen Facility
+        kitchen.setMaintenence_for_facility(KitchenMaster);
+
         System.out.println(kitchen.getMaintenence_for_facility().getRequests_for_fac().get(0).getAttached_Problem().toString());
 
         //scheduleMaintenance

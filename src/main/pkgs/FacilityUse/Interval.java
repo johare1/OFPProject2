@@ -1,7 +1,7 @@
 package pkgs.FacilityUse;
 import java.util.Date;
 
-public class Interval {
+public class Interval implements IntervalInf {
     Date startDate = new Date();
     Date endDate = new Date();
 

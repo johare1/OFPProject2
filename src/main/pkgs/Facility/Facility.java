@@ -1,10 +1,11 @@
 package pkgs.Facility;
+import pkgs.FacilityUse.Interval;
 import pkgs.Maintenence.*;
 import java.util.*;
 
 import pkgs.FacilityUse.FacilityUse;
 
-public class Facility {
+public class Facility implements FacilityInf {
     private int capacity;
     private boolean isvacated = false;
     private String name;
@@ -56,17 +57,18 @@ public class Facility {
     {
         return Usage_of_facility.calcUsageRate();
     }
-    public boolean assignFacilityToUse(Date start,Date end){
-        boolean canSchedule = Usage_of_facility.isInUseDuring(start, end);
+
+    public boolean assignFacilityToUse(Interval v){
+        boolean canSchedule = Usage_of_facility.isInUseDuring(v);
         if (!canSchedule){
-            this.Usage_of_facility.addInterval(start,end);
+            this.Usage_of_facility.addInterval(v);
             return true;
         }
         return false;
     }
 
-    public boolean isInUseDuringInterval(Date start,Date end){
-        return Usage_of_facility.isInUseDuring(start, end);
+    public boolean isInUseDuringInterval(Interval v){
+        return Usage_of_facility.isInUseDuring(v);
     }
 
     public void vacateFacility(){
